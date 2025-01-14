@@ -1,4 +1,18 @@
 url: https://cityriverspaces.github.io/visor/
 template:
   bootstrap: 5
-
+authors:
+  sidebar:
+    roles: [aut, cre]
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - isovist
+navbar:
+  components:
+    articles:
+      text: Articles
+      menu:
+        - text: Isovist analysis
+          href: articles/isovist.html
