@@ -1,3 +1,15 @@
+#' Get viewpoints along a line
+#'
+#' @param x object of class sf, sfc or sfg
+#' @param density number of points per distance unit
+#'
+#' @return object of class sfc_POINT
+#' @export
+get_viewpoints <- function(x, density = 1/50) {
+  if (density <= 0) stop("Density must be a non-zero positive number")
+  sf::st_line_sample(x, density = density) |> sf::st_cast("POINT")
+}
+
 #' Calculate isovist from a viewpoint
 #'
 #' @param occluders object of class sf, sfc or sfg
