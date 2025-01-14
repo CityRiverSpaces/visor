@@ -29,13 +29,13 @@ get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
   } else {
     rays <- get_rays(maxisovist, vpoint)
 
-    occ_in_maxisovist <- occluders[occ_intersections] |> st_union()
+    occ_in_maxisovist <- occluders[occ_intersections, ] |> st_union()
     rays_outside_occ <- sf::st_difference(rays, occ_in_maxisovist)
 
     # Get furthest vertex of ray segment closest to view point
     nonoccluded_end <- process_rays(rays_outside_occ, "LINESTRING") |>
       get_furthest_vertex()
-    occluded_end  <- process_rays(rays_outside_occ, "MULTILINESTRING") |>
+    occluded_end <- process_rays(rays_outside_occ, "MULTILINESTRING") |>
       get_furthest_vertex()
 
     # Combine vertices, order by ray angle and casting to polygon
