@@ -72,8 +72,15 @@ get_rays <- function(maxisovist, vpoint) {
 #' @return object of class sfc_POINT
 #' @export
 process_rays <- function(rays, geom_type) {
+  if (geom_type %in% c("LINESTRING", "MULTILINESTRING")) {
+    rays <- rays |>
+      dplyr::filter(sf::st_is(geometry, geom_type))
+  } else {
+    stop("geom_type must be 'LINESTRING' or 'MULTILINESTRING'")
+  }
+
   rays |>
-    dplyr::filter(sf::st_is(geometry, geom_type)) |>
+    sf::st_cast("LINESTRING") |>
     sf::st_cast("POINT")
 }
 
@@ -83,10 +90,11 @@ process_rays <- function(rays, geom_type) {
 #' @param id_col name of the id column
 #'
 #' @return object of class sfc_POINT
+#' @importFrom rlang !! sym
 #' @export
 get_furthest_vertex <- function(points, id_col = "id") {
   points |>
-    dplyr::group_by({{ id_col }}) |>
+    dplyr::group_by(!!rlang::sym(id_col)) |>
     dplyr::slice_tail(n = 2) |>
     dplyr::slice_head(n = 1) |>
     dplyr::summarise(do_union = FALSE, .groups = 'drop') |>
