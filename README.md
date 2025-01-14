@@ -4,6 +4,8 @@
 # visor
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of visor is to …
