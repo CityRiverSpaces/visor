@@ -49,7 +49,7 @@ isovist <- get_isovist(occluders, vpoints[4], raylen = 5)
 plot(isovist, col = "blue")
 plot(occluders_geom, col = "grey", add = TRUE)
 plot(line_geom, col = "lightblue", add = TRUE)
-plot(vpoints, col = "red", add = TRUE)
+plot(vpoints[4], col = "red", add = TRUE)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
