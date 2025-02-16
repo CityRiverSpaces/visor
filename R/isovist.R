@@ -68,8 +68,8 @@ get_rays <- function(maxisovist, vpoint) {
     line <- sf::st_cast(pair, "LINESTRING")
   })
   rays <- do.call(c, rays)
-  rays <- st_sf(geometry = rays,
-                id = seq_along(rays))
+  rays <- sf::st_sf(geometry = rays,
+                    id = seq_along(rays))
   rays
 }
 
