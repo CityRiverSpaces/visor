@@ -7,8 +7,14 @@
 #' @export
 get_viewpoints <- function(x, density = 1/50) {
   if (density <= 0) stop("Density must be a non-zero positive number")
+  if (sf::st_geometry_type(x) %in% c("POINT", "MULTIPOINT")) {
+    stop("Input cannot be a POINT or MULTIPOINT")
+  }
+
   x |>
+    # If input is POLYGON or MULTIPOLYGON, convert to MULTILINESTRING
     sf::st_cast("MULTILINESTRING") |>
+    sf::st_cast("LINESTRING") |>
     sf::st_line_sample(density = density) |>
     sf::st_cast("POINT")
 }

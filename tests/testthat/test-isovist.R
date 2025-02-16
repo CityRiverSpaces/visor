@@ -23,3 +23,21 @@ test_that("density of viewpoints is a non-zero positive number", {
   expect_error(get_viewpoints(line, density = 0))
   expect_error(get_viewpoints(line, density = -1.3))
 })
+
+test_that("input cannot be a POINT or MULTIPOINT", {
+  expect_error(get_viewpoints(sf::st_point(c(1, 1))))
+  expect_error(get_viewpoints(
+    sf::st_multipoint(matrix(c(1, 1, 2, 2), ncol = 2, byrow = TRUE))))
+})
+
+test_that("POLYGON input is converted to LINESTRING", {
+  density = 1
+  line <- sf::st_sf(geometry = sf::st_sfc(sf::st_polygon(
+    list(rbind(c(0, 0), c(0, 1), c(1, 1), c(1, 0), c(0, 0))))))
+  # Get viewpoints with POLYGON as input
+  vpoints <- get_viewpoints(line, density = density)
+  # Cast to LINESTRING to allow for length calculation
+  line <- sf::st_cast(line, "MULTILINESTRING") |>
+    sf::st_cast("LINESTRING")
+  expect_equal(length(vpoints), ceiling(sf::st_length(line) * density))
+})
