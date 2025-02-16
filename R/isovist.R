@@ -7,7 +7,10 @@
 #' @export
 get_viewpoints <- function(x, density = 1/50) {
   if (density <= 0) stop("Density must be a non-zero positive number")
-  sf::st_line_sample(x, density = density) |> sf::st_cast("POINT")
+  x |>
+    sf::st_cast("LINESTRING") |>
+    sf::st_line_sample(density = density) |>
+    sf::st_cast("POINT")
 }
 
 #' Calculate isovist from a viewpoint
