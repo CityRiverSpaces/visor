@@ -16,7 +16,7 @@ line <- st_sf(id = 1, geometry = line_geom)
 
 test_that("the correct number of viewpoints is created", {
   density = 1
-  vpoints <- get_viewpoints(line, density = density)
+  vpoints <- get_viewpoints(sf::st_geometry(line), density = density)
   expect_equal(length(vpoints), ceiling(sf::st_length(line) * density))
 })
 
