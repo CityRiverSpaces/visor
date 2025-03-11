@@ -30,6 +30,9 @@ get_viewpoints <- function(x, density = 1/50) {
 #' @import sf
 #' @export
 get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
+  if (is.null(occluders)) stop("The occluders object is NULL.")
+  if (is.null(vpoint)) stop("The viewpoint object is NULL.")
+
   maxisovist <- sf::st_buffer(vpoint, dist = raylen, nQuadSegs = (rayno-1)/4)
   occ_intersections <- sf::st_intersects(occluders, maxisovist, sparse = FALSE)
 
