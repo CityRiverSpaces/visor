@@ -15,7 +15,8 @@ License: Apache License (>= 2)
 Imports: 
     dplyr,
     rlang,
-    sf
+    sf,
+    sfheaders
 Suggests: 
     knitr,
     rmarkdown,
