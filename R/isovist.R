@@ -66,7 +66,7 @@ get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
 #' @export
 get_rays <- function(maxisovist, vpoint) {
   rayvertices <- sf::st_cast(maxisovist,"POINT")
-  rays <- lapply(X = seq_along(rayvertices), FUN = \(x) {
+  rays <- lapply(seq_along(rayvertices), \(x) {
     pair <- sf::st_combine(c(rayvertices[x], vpoint))
     line <- sf::st_cast(pair, "LINESTRING")
   })
