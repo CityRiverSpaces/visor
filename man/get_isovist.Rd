@@ -2,22 +2,30 @@
 % Please edit documentation in R/isovist.R
 \name{get_isovist}
 \alias{get_isovist}
-\title{Calculate isovist from a viewpoint}
+\title{Calculate isovist from one or multiple viewpoints}
 \usage{
-get_isovist(occluders, vpoint, rayno = 41, raylen = 100)
+get_isovist(
+  occluders,
+  viewpoints,
+  ray_num = 40,
+  ray_length = 100,
+  remove_holes = TRUE
+)
 }
 \arguments{
 \item{occluders}{object of class sf, sfc or sfg}
 
-\item{vpoint}{object of class sf, sfc or sfg}
+\item{viewpoints}{object of class sf, sfc or sfg}
 
-\item{rayno}{number of rays}
+\item{ray_num}{number of rays}
 
-\item{raylen}{length of rays}
+\item{ray_length}{length of rays}
+
+\item{remove_holes}{whether to remove holes from the overall isovist geometry}
 }
 \value{
-object of class sfc_POLYGON
+object of class sfc_POLYGON or sfc_MULTIPOLYGON
 }
 \description{
-Calculate isovist from a viewpoint
+Calculate isovist from one or multiple viewpoints
 }

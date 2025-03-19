@@ -2,18 +2,20 @@
 % Please edit documentation in R/isovist.R
 \name{get_rays}
 \alias{get_rays}
-\title{Get rays from a viewpoint within a maximum isovist}
+\title{Get rays from the viewpoints within a maximum isovist}
 \usage{
-get_rays(maxisovist, vpoint)
+get_rays(viewpoints, ray_num = 40, ray_length = 100)
 }
 \arguments{
-\item{maxisovist}{object of class sf, sfc or sfg}
+\item{viewpoints}{object of class sf_POINT or sfc_POINT}
 
-\item{vpoint}{object of class sf, sfc or sfg}
+\item{ray_num}{number of rays}
+
+\item{ray_length}{length of rays}
 }
 \value{
-object of class sfc_LINESTRING
+object of class sf_LINESTRING
 }
 \description{
-Get rays from a viewpoint within a maximum isovist
+Get rays from the viewpoints within a maximum isovist
 }
