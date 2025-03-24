@@ -115,7 +115,7 @@ get_furthest_vertex <- function(points, id_col = "id") {
     dplyr::group_by(!!sym(id_col)) |>
     dplyr::slice_tail(n = 2) |>
     dplyr::slice_head(n = 1) |>
-    dplyr::summarise(do_union = FALSE, .groups = 'drop') |>
+    dplyr::summarise(do_union = FALSE, .groups = "drop") |>
     sf::st_cast("POINT") |>
     suppressWarnings()
 }
