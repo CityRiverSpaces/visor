@@ -44,7 +44,8 @@ get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
     rays <- get_rays(maxisovist, vpoint)
 
     occ_in_maxisovist <- occluders[occ_intersections, ] |> sf::st_union()
-    rays_outside_occ <- sf::st_difference(rays, occ_in_maxisovist)
+    rays_outside_occ <- sf::st_difference(rays, occ_in_maxisovist) |>
+      suppressWarnings()
 
     # Get furthest vertex of ray segment closest to view point
     nonoccluded_end <- process_rays(rays_outside_occ, "LINESTRING") |>
@@ -97,7 +98,8 @@ process_rays <- function(rays, geom_type) {
 
   rays |>
     sf::st_cast("LINESTRING") |>
-    sf::st_cast("POINT")
+    sf::st_cast("POINT") |>
+    suppressWarnings()
 }
 
 #' Get furthest vertex from a set of points
@@ -113,6 +115,7 @@ get_furthest_vertex <- function(points, id_col = "id") {
     dplyr::group_by(!!sym(id_col)) |>
     dplyr::slice_tail(n = 2) |>
     dplyr::slice_head(n = 1) |>
-    dplyr::summarise(do_union = FALSE, .groups = "drop") |>
-    sf::st_cast("POINT")
+    dplyr::summarise(do_union = FALSE, .groups = 'drop') |>
+    sf::st_cast("POINT") |>
+    suppressWarnings()
 }
