@@ -22,18 +22,23 @@ get_viewpoints <- function(x, density = 1 / 50) {
 
 #' Calculate isovist from a viewpoint
 #'
-#' @param occluders object of class sf, sfc or sfg
 #' @param vpoint object of class sf, sfc or sfg
+#' @param occluders object of class sf, sfc or sfg
 #' @param rayno number of rays
 #' @param raylen length of rays
 #'
 #' @return object of class sfc_POLYGON
 #' @importFrom rlang !! sym
 #' @export
-get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
+get_isovist <- function(vpoint, occluders = NULL, rayno = 41, raylen = 100) {
   # Drop any attribute
-  occluders <- sf::st_geometry(occluders)
   vpoint <- sf::st_geometry(vpoint)
+
+  if (!is.null(occluders)) {
+    occluders <- sf::st_geometry(occluders)
+  } else {
+    occluders <- sf::st_sfc(crs = sf::st_crs(vpoint))
+  }
 
   maxisovist <- sf::st_buffer(vpoint, dist = raylen,
                               nQuadSegs = (rayno - 1) / 4)
