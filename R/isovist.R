@@ -16,7 +16,8 @@ get_viewpoints <- function(x, density = 1 / 50) {
     sf::st_cast("MULTILINESTRING") |>
     sf::st_cast("LINESTRING") |>
     sf::st_line_sample(density = density) |>
-    sfheaders::sfc_cast("POINT")
+    sfheaders::sfc_cast("POINT") |>
+    suppressWarnings()
 }
 
 #' Calculate isovist from a viewpoint
