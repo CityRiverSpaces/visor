@@ -4,7 +4,7 @@
 \alias{occlude_rays}
 \title{Determine the non-occluded segments of the rays}
 \usage{
-occlude_rays(rays, occluders)
+occlude_rays(rays, occluders = NULL)
 }
 \arguments{
 \item{rays}{object of class sf_LINESTRING}

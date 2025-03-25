@@ -13,7 +13,7 @@ get_isovist(
 )
 }
 \arguments{
-\item{viewpoints}{object of class sf, sfc or sfg}
+\item{viewpoints}{object of class sf_POINT or sfc_POINT}
 
 \item{occluders}{object of class sf, sfc or sfg}
 
