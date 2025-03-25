@@ -4,12 +4,12 @@
 \alias{get_isovist}
 \title{Calculate isovist from a viewpoint}
 \usage{
-get_isovist(occluders, vpoint, rayno = 41, raylen = 100)
+get_isovist(vpoint, occluders = NULL, rayno = 41, raylen = 100)
 }
 \arguments{
-\item{occluders}{object of class sf, sfc or sfg}
-
 \item{vpoint}{object of class sf, sfc or sfg}
+
+\item{occluders}{object of class sf, sfc or sfg}
 
 \item{rayno}{number of rays}
 

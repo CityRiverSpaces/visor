@@ -28,10 +28,13 @@ occluders_geom <- st_sfc(
   create_occluder(2, 5, 2, 1),
   create_occluder(5, 5, 1, 1.5),
   create_occluder(1, 7, 1.2, 0.6),
-  create_occluder(7, 7, 1.8, 0.9))
+  create_occluder(7, 7, 1.8, 0.9)
+)
 occluders <- st_sf(id = 1:7, geometry = occluders_geom)
 
-line_geom <- st_sfc(st_linestring(matrix(c(0, 3, 9, 3), ncol = 2, byrow = TRUE)))
+line_geom <- st_sfc(
+  st_linestring(matrix(c(0, 3, 9, 3), ncol = 2, byrow = TRUE))
+)
 line <- st_sf(id = 1, geometry = line_geom)
 ```
 
@@ -40,7 +43,7 @@ vpoints <- get_viewpoints(line, 1)
 ```
 
 ```{r}
-isovist <- get_isovist(occluders, vpoints[4], raylen = 5)
+isovist <- get_isovist(vpoints[4], occluders, raylen = 5)
 ```
 
 ```{r}

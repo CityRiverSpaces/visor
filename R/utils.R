@@ -16,10 +16,10 @@ create_occluder <- function(center_x, center_y, length, width) {
   y_min <- center_y - width / 2
   y_max <- center_y + width / 2
   sf::st_polygon(list(matrix(c(x_min, y_min,
-                           x_max, y_min,
-                           x_max, y_max,
-                           x_min, y_max,
-                           x_min, y_min),
-                         ncol = 2,
-                         byrow = TRUE)))
+                               x_max, y_min,
+                               x_max, y_max,
+                               x_min, y_max,
+                               x_min, y_min),
+                             ncol = 2,
+                             byrow = TRUE)))
 }

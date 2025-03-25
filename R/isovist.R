@@ -5,9 +5,9 @@
 #'
 #' @return object of class sfc_POINT
 #' @export
-get_viewpoints <- function(x, density = 1/50) {
+get_viewpoints <- function(x, density = 1 / 50) {
   if (density <= 0) stop("Density must be a non-zero positive number")
-  if (sf::st_geometry_type(x) %in% c("POINT", "MULTIPOINT")) {
+  if (any(sf::st_geometry_type(x) %in% c("POINT", "MULTIPOINT"))) {
     stop("Input cannot be a POINT or MULTIPOINT")
   }
 
@@ -16,32 +16,40 @@ get_viewpoints <- function(x, density = 1/50) {
     sf::st_cast("MULTILINESTRING") |>
     sf::st_cast("LINESTRING") |>
     sf::st_line_sample(density = density) |>
-    sfheaders::sfc_cast("POINT")
+    sfheaders::sfc_cast("POINT") |>
+    suppressWarnings()
 }
 
 #' Calculate isovist from a viewpoint
 #'
-#' @param occluders object of class sf, sfc or sfg
 #' @param vpoint object of class sf, sfc or sfg
+#' @param occluders object of class sf, sfc or sfg
 #' @param rayno number of rays
 #' @param raylen length of rays
 #'
 #' @return object of class sfc_POLYGON
-#' @import sf
+#' @importFrom rlang !! sym
 #' @export
-get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
-  if (is.null(occluders)) stop("The occluders object is NULL.")
-  if (is.null(vpoint)) stop("The viewpoint object is NULL.")
+get_isovist <- function(vpoint, occluders = NULL, rayno = 41, raylen = 100) {
+  # Drop any attribute
+  vpoint <- sf::st_geometry(vpoint)
 
-  maxisovist <- sf::st_buffer(vpoint, dist = raylen, nQuadSegs = (rayno-1)/4)
+  if (!is.null(occluders)) {
+    occluders <- sf::st_geometry(occluders)
+  } else {
+    occluders <- sf::st_sfc(crs = sf::st_crs(vpoint))
+  }
+
+  maxisovist <- sf::st_buffer(vpoint, dist = raylen,
+                              nQuadSegs = (rayno - 1) / 4)
   occ_intersections <- sf::st_intersects(occluders, maxisovist, sparse = FALSE)
 
-  if (!any(occ_intersections)){
+  if (!any(occ_intersections)) {
     isovist <- maxisovist
   } else {
     rays <- get_rays(maxisovist, vpoint)
 
-    occ_in_maxisovist <- occluders[occ_intersections, ] |> st_union()
+    occ_in_maxisovist <- occluders[occ_intersections, ] |> sf::st_union()
     rays_outside_occ <- sf::st_difference(rays, occ_in_maxisovist) |>
       suppressWarnings()
 
@@ -52,7 +60,8 @@ get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
       get_furthest_vertex()
 
     # Combine vertices, order by ray angle and casting to polygon
-    all_vertices <- rbind(nonoccluded_end, occluded_end) |> dplyr::arrange(id)
+    all_vertices <- rbind(nonoccluded_end, occluded_end) |>
+      dplyr::arrange(!!sym("id"))
     isovist  <- sf::st_combine(all_vertices) |> sf::st_cast("POLYGON")
   }
   isovist
@@ -66,10 +75,10 @@ get_isovist <- function(occluders, vpoint, rayno = 41, raylen = 100) {
 #' @return object of class sfc_LINESTRING
 #' @export
 get_rays <- function(maxisovist, vpoint) {
-  rayvertices <- sf::st_cast(maxisovist,"POINT")
+  rayvertices <- sf::st_cast(maxisovist, "POINT")
   rays <- lapply(seq_along(rayvertices), \(x) {
-    pair <- sf::st_combine(c(rayvertices[x], vpoint))
-    line <- sf::st_cast(pair, "LINESTRING")
+    sf::st_combine(c(rayvertices[x], vpoint)) |>
+      sf::st_cast("LINESTRING")
   })
   rays <- do.call(c, rays)
   rays <- sf::st_sf(geometry = rays,
@@ -83,11 +92,12 @@ get_rays <- function(maxisovist, vpoint) {
 #' @param geom_type 'LINESTRING' or 'MULTILINESTRING'
 #'
 #' @return object of class sfc_POINT
+#' @importFrom rlang !! sym
 #' @export
 process_rays <- function(rays, geom_type) {
   if (geom_type %in% c("LINESTRING", "MULTILINESTRING")) {
     rays <- rays |>
-      dplyr::filter(sf::st_is(geometry, geom_type))
+      dplyr::filter(sf::st_is(!!sym("geometry"), geom_type))
   } else {
     stop("geom_type must be 'LINESTRING' or 'MULTILINESTRING'")
   }
@@ -108,10 +118,10 @@ process_rays <- function(rays, geom_type) {
 #' @export
 get_furthest_vertex <- function(points, id_col = "id") {
   points |>
-    dplyr::group_by(!!rlang::sym(id_col)) |>
+    dplyr::group_by(!!sym(id_col)) |>
     dplyr::slice_tail(n = 2) |>
     dplyr::slice_head(n = 1) |>
-    dplyr::summarise(do_union = FALSE, .groups = 'drop') |>
+    dplyr::summarise(do_union = FALSE, .groups = "drop") |>
     sf::st_cast("POINT") |>
     suppressWarnings()
 }
