@@ -16,24 +16,25 @@ get_viewpoints <- function(x, density = 1 / 50) {
     sf::st_cast("MULTILINESTRING") |>
     sf::st_cast("LINESTRING") |>
     sf::st_line_sample(density = density) |>
-    sfheaders::sfc_cast("POINT")
+    sfheaders::sfc_cast("POINT") |>
+    suppressWarnings()
 }
 
 #' Calculate isovist from one or multiple viewpoints
 #'
-#' @param occluders object of class sf, sfc or sfg
 #' @param viewpoints object of class sf, sfc or sfg
+#' @param occluders object of class sf, sfc or sfg
 #' @param ray_num number of rays
 #' @param ray_length length of rays
 #' @param remove_holes whether to remove holes from the overall isovist geometry
 #'
 #' @return object of class sfc_POLYGON or sfc_MULTIPOLYGON
 #' @export
-get_isovist <- function(occluders, viewpoints, ray_num = 40, ray_length = 100,
-                        remove_holes = TRUE) {
+get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40, 
+                        ray_length = 100, remove_holes = TRUE) {
   rays <- get_rays(viewpoints, ray_num = ray_num, ray_length = ray_length)
 
-  rays_occluded <- occlude_rays(rays, occluders)
+  rays_occluded <- occlude_rays(rays, occluders = occluders)
 
   isovists <- get_isovists(rays_occluded)
 
@@ -95,9 +96,14 @@ get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
 #' @param occluders object of class sf, sfc or sfg
 #'
 #' @return object of class sf_LINESTRING
-occlude_rays <- function(rays, occluders) {
+occlude_rays <- function(rays, occluders = NULL) {
   ray_geoms <- sf::st_geometry(rays)
-  occluder_geoms <- sf::st_geometry(occluders)
+
+  if (!is.null(occluders)) {
+    occluders <- sf::st_geometry(occluders)
+  } else {
+    occluders <- sf::st_sfc(crs = sf::st_crs(ray_geoms))
+  }
 
   # Find out which rays and occluders intersect each other
   intersections <- sf::st_intersects(ray_geoms, occluder_geoms)
@@ -115,7 +121,8 @@ occlude_rays <- function(rays, occluders) {
   # By casting `diffs` to linestrings, we keep only the first segment of each
   # ray, which, by construction, runs from the original viewpoint to the first
   # occluder (if any)
-  rays_occluded <- sf::st_cast(diffs, "LINESTRING")
+  rays_occluded <- sf::st_cast(diffs, "LINESTRING") |>
+    suppressWarnings()
 
   # Update the occluded ray geometries and return the sf(c) object
   ray_geoms[ray_intersects_occluders] <- rays_occluded

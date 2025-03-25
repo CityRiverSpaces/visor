@@ -5,17 +5,17 @@
 \title{Calculate isovist from one or multiple viewpoints}
 \usage{
 get_isovist(
-  occluders,
   viewpoints,
+  occluders = NULL,
   ray_num = 40,
   ray_length = 100,
   remove_holes = TRUE
 )
 }
 \arguments{
-\item{occluders}{object of class sf, sfc or sfg}
-
 \item{viewpoints}{object of class sf, sfc or sfg}
+
+\item{occluders}{object of class sf, sfc or sfg}
 
 \item{ray_num}{number of rays}
 
