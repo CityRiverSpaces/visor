@@ -48,6 +48,7 @@ get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40,
 #' @param ray_length length of rays
 #'
 #' @return object of class sf_LINESTRING
+#' @keywords internal
 get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
   # Sanity checks on input
   if (!all(sf::st_is(viewpoints, "POINT"))) {
@@ -103,6 +104,7 @@ get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
 #' @param occluders object of class sf, sfc or sfg
 #'
 #' @return object of class sf_LINESTRING
+#' @keywords internal
 occlude_rays <- function(rays, occluders = NULL) {
   if (is.null(occluders)) {
     return(rays)
@@ -139,6 +141,7 @@ occlude_rays <- function(rays, occluders = NULL) {
 #' @param rays object of class sf, including the "isovist_id" attribute
 #'
 #' @return object of class sfc_POLYGON
+#' @keywords internal
 get_isovists <- function(rays) {
   # Extract ray endpoints
   ray_points <- sfheaders::sf_to_df(rays, fill = TRUE)  # fill keeps all columns
@@ -161,6 +164,7 @@ get_isovists <- function(rays) {
 #' @param remove_holes whether to remove holes from the overall isovist geometry
 #'
 #' @return object of class sfc_POLYGON or sfc_MULTIPOLYGON
+#' @keywords internal
 merge_isovists <- function(isovists, remove_holes = TRUE) {
   isovist_union <- sf::st_union(isovists)
   if (remove_holes) isovist_union <- sfheaders::sf_remove_holes(isovist_union)

@@ -17,3 +17,4 @@ object of class sf_LINESTRING
 \description{
 Determine the non-occluded segments of the rays
 }
+\keyword{internal}

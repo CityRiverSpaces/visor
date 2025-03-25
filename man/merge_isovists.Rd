@@ -17,3 +17,4 @@ object of class sfc_POLYGON or sfc_MULTIPOLYGON
 \description{
 Merge the viewpoint isovists
 }
+\keyword{internal}

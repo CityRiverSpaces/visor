@@ -15,3 +15,4 @@ object of class sfc_POLYGON
 \description{
 Construct isovist from (partially occluded) rays
 }
+\keyword{internal}

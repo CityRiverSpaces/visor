@@ -19,3 +19,4 @@ object of class sf_LINESTRING
 \description{
 Get rays from the viewpoints within a maximum isovist
 }
+\keyword{internal}
