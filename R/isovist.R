@@ -30,7 +30,7 @@ get_viewpoints <- function(x, density = 1 / 50) {
 #'
 #' @return object of class sfc_POLYGON or sfc_MULTIPOLYGON
 #' @export
-get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40, 
+get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40,
                         ray_length = 100, remove_holes = TRUE) {
   rays <- get_rays(viewpoints, ray_num = ray_num, ray_length = ray_length)
 
@@ -100,9 +100,9 @@ occlude_rays <- function(rays, occluders = NULL) {
   ray_geoms <- sf::st_geometry(rays)
 
   if (!is.null(occluders)) {
-    occluders <- sf::st_geometry(occluders)
+    occluder_geoms <- sf::st_geometry(occluders)
   } else {
-    occluders <- sf::st_sfc(crs = sf::st_crs(ray_geoms))
+    occluder_geoms <- sf::st_sfc(crs = sf::st_crs(ray_geoms))
   }
 
   # Find out which rays and occluders intersect each other
