@@ -158,7 +158,7 @@ test_that("get_isovists transforms rays to polygons", {
   expect_setequal(sf::st_cast(isovists[2], "POINT"), points_isovist_2)
 })
 
-test_that("Merge isovists returns the merged polygon, with or without holes", {
+test_that("merge_isovists returns the merged polygon, with or without holes", {
   isovist_1 <-  sf::st_buffer(sf::st_point(c(0, 0)), 2)
   isovist_2 <-  sf::st_buffer(sf::st_point(c(2, 0)), 2)
   hole <- sf::st_buffer(sf::st_point(c(-1, 0)), 0.5)
