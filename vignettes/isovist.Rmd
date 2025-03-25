@@ -43,7 +43,7 @@ vpoints <- get_viewpoints(line, 1)
 ```
 
 ```{r}
-isovist <- get_isovist(vpoints[4], occluders, raylen = 5)
+isovist <- get_isovist(vpoints, occluders, ray_length = 5)
 ```
 
 ```{r}
