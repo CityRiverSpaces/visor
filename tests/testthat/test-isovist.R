@@ -99,6 +99,18 @@ test_that("Rays construction fails for incorrect input arguments", {
   expect_error(get_rays(line, ray_num = ray_num, ray_length = 0))
 })
 
+test_that("The number of rays are rounded to the closest multiple of four", {
+  viewpoint <- sf::st_sfc(sf::st_point(c(0, 1)))
+  # Multiple of four, no warning
+  ray_num <- 40
+  expect_no_warning(get_rays(viewpoint, ray_num = ray_num))
+  # Expect warning otherwise
+  ray_num <- 41  # round down to 40
+  expect_warning(get_rays(viewpoint, ray_num = ray_num), "40")
+  ray_num <- 43  # round up to 44
+  expect_warning(get_rays(viewpoint, ray_num = ray_num), "44")
+})
+
 test_that("Occluding rays without occluders return untouched rays", {
   ray_geoms <- sf::st_sfc(
     sf::st_linestring(cbind(c(0, 1), c(0, 0))),
