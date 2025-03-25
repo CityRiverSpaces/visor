@@ -12,12 +12,10 @@ Description: visor provides tools for visibilty analysis in geospatial
     data. It offers functions for various types of visibility analysis,
     such as isovist, viewshed, and visibility analysis.
 License: Apache License (>= 2)
-Imports: 
-    dplyr,
-    rlang,
+Imports:
     sf,
     sfheaders
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
