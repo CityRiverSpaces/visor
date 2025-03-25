@@ -121,7 +121,7 @@ occlude_rays <- function(rays, occluders = NULL) {
   # By casting `diffs` to linestrings, we keep only the first segment of each
   # ray, which, by construction, runs from the original viewpoint to the first
   # occluder (if any)
-  rays_occluded <- sf::st_cast(diffs, "LINESTRING") |>
+  rays_occluded <- sf::st_cast(diffs, "LINESTRING", group_or_split = FALSE) |>
     suppressWarnings()
 
   # Update the occluded ray geometries and return the sf(c) object
