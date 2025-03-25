@@ -14,7 +14,7 @@ occluders <- sf::st_sf(id = 1:7, geometry = occluders_geom)
 line_geom <- sf::st_sfc(
   sf::st_linestring(matrix(c(0, 3, 9, 3), ncol = 2, byrow = TRUE))
 )
-line <- st_sf(id = 1, geometry = line_geom)
+line <- sf::st_sf(id = 1, geometry = line_geom)
 
 test_that("the correct number of viewpoints is created", {
   density <- 1
