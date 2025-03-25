@@ -7,11 +7,12 @@
 <url><loc>https://cityriverspaces.github.io/visor/authors.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/index.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/reference/create_occluder.html</loc></url>
-<url><loc>https://cityriverspaces.github.io/visor/reference/get_furthest_vertex.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/reference/get_isovist.html</loc></url>
+<url><loc>https://cityriverspaces.github.io/visor/reference/get_isovists.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/reference/get_rays.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/reference/get_viewpoints.html</loc></url>
 <url><loc>https://cityriverspaces.github.io/visor/reference/index.html</loc></url>
-<url><loc>https://cityriverspaces.github.io/visor/reference/process_rays.html</loc></url>
+<url><loc>https://cityriverspaces.github.io/visor/reference/merge_isovists.html</loc></url>
+<url><loc>https://cityriverspaces.github.io/visor/reference/occlude_rays.html</loc></url>
 </urlset>
 
