@@ -22,7 +22,7 @@ get_viewpoints <- function(x, density = 1 / 50) {
 
 #' Calculate isovist from one or multiple viewpoints
 #'
-#' @param viewpoints object of class sf, sfc or sfg
+#' @param viewpoints object of class sf_POINT or sfc_POINT
 #' @param occluders object of class sf, sfc or sfg
 #' @param ray_num number of rays
 #' @param ray_length length of rays
@@ -49,8 +49,15 @@ get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40,
 #'
 #' @return object of class sf_LINESTRING
 get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
-  # Make sure the number of rays is a whole number
+  # Sanity checks on input
+  if (!all(sf::st_is(viewpoints, "POINT"))) {
+    stop("viewpoints must consist of POINT geometries")
+  }
+  if (round(ray_num) != ray_num || ray_num <= 0) stop(
+    "ray_num must be a positive whole number"
+  )
   ray_num <- as.integer(ray_num)
+  if (ray_length <= 0) stop("ray_length must be larger than zero")
 
   # Generate points on the maximum isovist of the given length
   maxisovists <- sf::st_buffer(viewpoints, dist = ray_length,
@@ -97,13 +104,11 @@ get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
 #'
 #' @return object of class sf_LINESTRING
 occlude_rays <- function(rays, occluders = NULL) {
-  ray_geoms <- sf::st_geometry(rays)
-
-  if (!is.null(occluders)) {
-    occluder_geoms <- sf::st_geometry(occluders)
-  } else {
-    occluder_geoms <- sf::st_sfc(crs = sf::st_crs(ray_geoms))
+  if (is.null(occluders)) {
+    return(rays)
   }
+  ray_geoms <- sf::st_geometry(rays)
+  occluder_geoms <- sf::st_geometry(occluders)
 
   # Find out which rays and occluders intersect each other
   intersections <- sf::st_intersects(ray_geoms, occluder_geoms)
