@@ -131,7 +131,7 @@ test_that("Occluding rays with a polygon returns modified rays", {
   expect_setequal(sf::st_geometry(actual), expected)
 })
 
-test_that("Get isovists transform rays to polygons", {
+test_that("get_isovists transforms rays to polygons", {
   center_isovist_1 <- sf::st_point(c(0, 0))
   points_isovist_1 <- sf::st_sfc(
     sf::st_point(c(0, 1)), sf::st_point(c(1, 0)),
