@@ -44,7 +44,8 @@ get_isovist <- function(viewpoints, occluders = NULL, ray_num = 40,
 #' Get rays from the viewpoints within a maximum isovist
 #'
 #' @param viewpoints object of class sf_POINT or sfc_POINT
-#' @param ray_num number of rays
+#' @param ray_num number of rays. The number of rays per quadrant needs to be a
+#'   whole number, so `ray_num` will be rounded to the closest multiple of four
 #' @param ray_length length of rays
 #'
 #' @return object of class sf_LINESTRING
@@ -54,10 +55,12 @@ get_rays <- function(viewpoints, ray_num = 40, ray_length = 100) {
   if (!all(sf::st_is(viewpoints, "POINT"))) {
     stop("viewpoints must consist of POINT geometries")
   }
-  if (round(ray_num) != ray_num || ray_num <= 0) stop(
-    "ray_num must be a positive whole number"
-  )
-  ray_num <- as.integer(ray_num)
+  if (ray_num <= 0) stop("ray_num must be a positive number")
+  ray_num_rounded <- round(ray_num / 4) * 4
+  if (ray_num_rounded != ray_num) warning(sprintf(
+    "ray_num is rounded to %s", ray_num_rounded
+  ))
+  ray_num <- as.integer(ray_num_rounded)
   if (ray_length <= 0) stop("ray_length must be larger than zero")
 
   # Generate points on the maximum isovist of the given length
