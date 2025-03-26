@@ -55,7 +55,8 @@ line <- st_sf(id = 1, geometry = line_geom)
 
 vpoints <- get_viewpoints(line, 1)
 
-isovist <- get_isovist(vpoints, occluders, ray_length = 5)
+isovist <- get_isovist(vpoints, occluders, ray_num = 160, ray_length = 5,
+                       remove_holes = FALSE)
 
 plot(isovist, col = "blue")
 plot(occluders_geom, col = "grey", add = TRUE)
