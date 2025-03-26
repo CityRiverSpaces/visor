@@ -16,8 +16,8 @@ You can install the development version of visor from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("CityRiverSpaces/visor")
+# install.packages("pak")
+pak::pak("CityRiverSpaces/visor")
 ```
 
 ## Example
@@ -27,7 +27,6 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(visor)
 library(sf)
-#> Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE
 
 occluders_geom <- st_sfc(
   create_occluder(1, 1, 1, 0.5),
@@ -44,12 +43,13 @@ line <- st_sf(id = 1, geometry = line_geom)
 
 vpoints <- get_viewpoints(line, 1)
 
-isovist <- get_isovist(occluders, vpoints[4], raylen = 5)
+isovist <- get_isovist(vpoints, occluders, ray_num = 160, ray_length = 5,
+                       remove_holes = FALSE)
 
 plot(isovist, col = "blue")
 plot(occluders_geom, col = "grey", add = TRUE)
 plot(line_geom, col = "lightblue", add = TRUE)
-plot(vpoints[4], col = "red", add = TRUE)
+plot(vpoints, col = "red", add = TRUE)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
