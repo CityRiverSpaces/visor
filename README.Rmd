@@ -10,7 +10,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  warning = FALSE
+  warning = FALSE,
+  message = FALSE
 )
 ```
 
@@ -27,8 +28,8 @@ The goal of visor is to provide a set of tools for visibility analysis.
 You can install the development version of visor from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("CityRiverSpaces/visor")
+# install.packages("pak")
+pak::pak("CityRiverSpaces/visor")
 ```
 
 ## Example
@@ -54,7 +55,7 @@ line <- st_sf(id = 1, geometry = line_geom)
 
 vpoints <- get_viewpoints(line, 1)
 
-isovist <- get_isovist(occluders, vpoints[4], raylen = 5)
+isovist <- get_isovist(vpoints, occluders, ray_length = 5)
 
 plot(isovist, col = "blue")
 plot(occluders_geom, col = "grey", add = TRUE)
