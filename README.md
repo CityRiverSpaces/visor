@@ -12,6 +12,13 @@ The goal of visor is to provide a set of tools for visibility analysis.
 
 ## Installation
 
+You can install the released version of visor from
+[CRAN](https://cran.r-project.org) with:
+
+``` r
+install.packages("visor")
+```
+
 You can install the development version of visor from
 [GitHub](https://github.com/) with:
 
