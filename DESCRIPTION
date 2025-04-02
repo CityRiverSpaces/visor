@@ -1,17 +1,19 @@
 Package: visor
 Title: Geospatial Tools for Visibility Analysis
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
-    person("Claudiu", "Forgaci", , "c.forgaci@tudelft.nl", role = c("aut", "cre"),
+    person("Claudiu", "Forgaci", , "c.forgaci@tudelft.nl", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-3218-5102")),
     person("Francesco", "Nattino", , "f.nattino@esciencecenter.nl", role = "aut",
            comment = c(ORCID = "0000-0003-3286-0139")),
     person("Netherlands eScience Center", , , "info@esciencecenter.nl", role = "fnd")
   )
-Description: visor provides tools for visibilty analysis in geospatial
-    data. It offers functions for various types of visibility analysis,
+Description: Provides tools for visibilty analysis in geospatial data.
+    It offers functions for various types of visibility analysis,
     such as isovist, viewshed, and visibility analysis.
 License: Apache License (>= 2)
+URL: https://cityriverspaces.github.io/visor/, https://github.com/CityRiverSpaces/visor
+BugReports: https://github.com/CityRiverSpaces/visor/issues
 Imports:
     sf,
     sfheaders
@@ -19,10 +21,11 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+Depends:
+    R (>= 4.1.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
-URL: https://cityriverspaces.github.io/visor/
