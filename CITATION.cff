@@ -8,22 +8,22 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: Francesco
-    family-names: Nattino
-    email: f.nattino@esciencecenter.nl
-    affiliation: Netherlands eScience Center
-    orcid: 'https://orcid.org/0000-0003-3286-0139'
   - given-names: Claudiu
     family-names: Forgaci
     email: c.forgaci@tudelft.nl
     affiliation: Delft University of Technology
     orcid: 'https://orcid.org/0000-0003-3218-5102'
+  - given-names: Francesco
+    family-names: Nattino
+    email: f.nattino@esciencecenter.nl
+    affiliation: Netherlands eScience Center
+    orcid: 'https://orcid.org/0000-0003-3286-0139'
 repository-code: 'https://github.com/CityRiverSpaces/visor'
 url: 'https://cityriverspaces.github.io/visor'
 abstract: >-
-  Provides tools for visibilty analysis in geospatial data.
-  It offers functions for various types of visibility analysis,
-  such as isovist, viewshed, and visibility analysis.
+  Provides tools for visibilty analysis in geospatial data. It
+  offers functionality to perfom isovist calculations, using
+  arbitrary geometries as both viewpoints and occluders.
 keywords:
   - R
   - isovist
