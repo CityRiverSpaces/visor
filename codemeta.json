@@ -2,11 +2,11 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "visor",
-  "description": "Provides tools for visibilty analysis in geospatial data. It offers functions for various types of visibility analysis, such as isovist, viewshed, and visibility analysis.",
+  "description": "Provides tools for visibilty analysis in geospatial data. It offers functionality to perfom isovist calculations, using arbitrary geometries as both viewpoints and occluders.",
   "name": "visor: Geospatial Tools for Visibility Analysis",
   "relatedLink": "https://cityriverspaces.github.io/visor/",
   "codeRepository": "https://github.com/CityRiverSpaces/visor",
-  "issueTracker": "https://github.com/CityRiverSpaces/CRiSpData/issues",
+  "issueTracker": "https://github.com/CityRiverSpaces/visor/issues",
   "license": "Apache License 2",
   "version": "0.1.0",
   "programmingLanguage": {
@@ -29,6 +29,15 @@
       "familyName": "Nattino",
       "email": "f.nattino@esciencecenter.nl",
       "@id": "https://orcid.org/0000-0003-3286-0139"
+    }
+  ],
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Claudiu",
+      "familyName": "Forgaci",
+      "email": "c.forgaci@tudelft.nl",
+      "@id": "https://orcid.org/0000-0003-3218-5102"
     }
   ],
   "funder": [
@@ -119,7 +128,8 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "256.063KB",
+  "fileSize": "256.652KB",
+  "releaseNotes": "https://github.com/CityRiverSpaces/visor/blob/master/NEWS.md",
   "readme": "https://github.com/CityRiverSpaces/visor/blob/main/README.md",
   "contIntegration": "https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml"
 }
