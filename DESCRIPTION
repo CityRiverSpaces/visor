@@ -8,8 +8,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-3286-0139")),
     person("Netherlands eScience Center", , , "info@esciencecenter.nl", role = "fnd")
   )
-Description: Provides tools for visibilty analysis in geospatial data. It
-    offers functionality to perfom isovist calculations, using arbitrary
+Description: Provides tools for visibility analysis in geospatial data. It
+    offers functionality to perform isovist calculations, using arbitrary
     geometries as both viewpoints and occluders.
 License: Apache License (>= 2)
 URL: https://cityriverspaces.github.io/visor/, https://github.com/CityRiverSpaces/visor

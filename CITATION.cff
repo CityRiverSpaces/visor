@@ -21,8 +21,8 @@ authors:
 repository-code: 'https://github.com/CityRiverSpaces/visor'
 url: 'https://cityriverspaces.github.io/visor'
 abstract: >-
-  Provides tools for visibilty analysis in geospatial data. It
-  offers functionality to perfom isovist calculations, using
+  Provides tools for visibility analysis in geospatial data. It
+  offers functionality to perform isovist calculations, using
   arbitrary geometries as both viewpoints and occluders.
 keywords:
   - R
