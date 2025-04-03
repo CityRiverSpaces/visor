@@ -62,5 +62,4 @@ plot(isovist, col = "blue")
 plot(occluders, col = "grey", add = TRUE)
 plot(line, col = "lightblue", add = TRUE)
 plot(vpoints, col = "red", add = TRUE)
-
 ```
