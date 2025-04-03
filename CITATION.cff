@@ -1,0 +1,32 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'visor: Geospatial Tools for Visibility Analysis'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Claudiu
+    family-names: Forgaci
+    email: c.forgaci@tudelft.nl
+    affiliation: Delft University of Technology
+    orcid: 'https://orcid.org/0000-0003-3218-5102'
+  - given-names: Francesco
+    family-names: Nattino
+    email: f.nattino@esciencecenter.nl
+    affiliation: Netherlands eScience Center
+    orcid: 'https://orcid.org/0000-0003-3286-0139'
+repository-code: 'https://github.com/CityRiverSpaces/visor'
+url: 'https://cityriverspaces.github.io/visor'
+abstract: >-
+  Provides tools for visibility analysis in geospatial data. It
+  offers functionality to perform isovist calculations, using
+  arbitrary geometries as both viewpoints and occluders.
+keywords:
+  - R
+  - isovist
+  - visibility
+  - geospatial
+license: Apache-2.0

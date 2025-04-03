@@ -2,7 +2,7 @@
 % Please edit documentation in R/isovist.R
 \name{get_viewpoints}
 \alias{get_viewpoints}
-\title{Get viewpoints along a line}
+\title{Get viewpoints from an arbitrary geometry}
 \usage{
 get_viewpoints(x, density = 1/50)
 }
@@ -15,5 +15,11 @@ get_viewpoints(x, density = 1/50)
 object of class sfc_POINT
 }
 \description{
-Get viewpoints along a line
+Generate a discrete set of points on the given geometry. If the geometry is
+a (MULTI)POLYGON, points are generated on its boundary.
+}
+\examples{
+line <- sf::st_linestring(cbind(c(-1, 1), c(0, 0)))
+get_viewpoints(line, density = 5)
+
 }

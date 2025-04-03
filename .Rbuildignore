@@ -8,3 +8,6 @@
 ^pkgdown$
 ^doc$
 ^Meta$
+^CITATION.cff$
+^cran-comments\.md$
+^codemeta\.json$

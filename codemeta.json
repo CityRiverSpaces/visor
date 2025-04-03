@@ -1,0 +1,135 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "visor",
+  "description": "Provides tools for visibility analysis in geospatial data. It offers functionality to perform isovist calculations, using arbitrary geometries as both viewpoints and occluders.",
+  "name": "visor: Geospatial Tools for Visibility Analysis",
+  "relatedLink": "https://cityriverspaces.github.io/visor/",
+  "codeRepository": "https://github.com/CityRiverSpaces/visor",
+  "issueTracker": "https://github.com/CityRiverSpaces/visor/issues",
+  "license": "Apache License 2",
+  "version": "0.1.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.4.0 (2024-04-24)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Claudiu",
+      "familyName": "Forgaci",
+      "email": "c.forgaci@tudelft.nl",
+      "@id": "https://orcid.org/0000-0003-3218-5102"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Francesco",
+      "familyName": "Nattino",
+      "email": "f.nattino@esciencecenter.nl",
+      "@id": "https://orcid.org/0000-0003-3286-0139"
+    }
+  ],
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Claudiu",
+      "familyName": "Forgaci",
+      "email": "c.forgaci@tudelft.nl",
+      "@id": "https://orcid.org/0000-0003-3218-5102"
+    }
+  ],
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "Netherlands eScience Center",
+      "email": "info@esciencecenter.nl"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Claudiu",
+      "familyName": "Forgaci",
+      "email": "c.forgaci@tudelft.nl",
+      "@id": "https://orcid.org/0000-0003-3218-5102"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "sfheaders",
+      "name": "sfheaders",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sfheaders"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 4.1.0"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "259.086KB",
+  "releaseNotes": "https://github.com/CityRiverSpaces/visor/blob/master/NEWS.md",
+  "readme": "https://github.com/CityRiverSpaces/visor/blob/main/README.md",
+  "contIntegration": "https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml"
+}
