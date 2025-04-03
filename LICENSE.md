@@ -1,3 +1,7 @@
+Technische Universiteit Delft hereby disclaims all copyright interest in the program
+“visor” (Geospatial Tools for Visibility Analysis) written by the Author(s).
+Dick van Gameren, Dean of the Faculty of Architecture and the Built Environment
+
 Apache License
 ==============
 
