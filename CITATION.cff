@@ -18,6 +18,9 @@ authors:
     email: f.nattino@esciencecenter.nl
     affiliation: Netherlands eScience Center
     orcid: 'https://orcid.org/0000-0003-3286-0139'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15133420
 repository-code: 'https://github.com/CityRiverSpaces/visor'
 url: 'https://cityriverspaces.github.io/visor'
 abstract: >-

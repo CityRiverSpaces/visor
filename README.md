@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15133420.svg)](https://doi.org/10.5281/zenodo.15133420)
+[![CRAN-status](https://www.r-pkg.org/badges/version/visor)](https://CRAN.R-project.org/package=visor)
 <!-- badges: end -->
 
 The goal of visor is to provide a set of tools for visibility analysis.
