@@ -12,7 +12,7 @@ Description: Provides tools for visibility analysis in geospatial data. It
     offers functionality to perform isovist calculations, using arbitrary
     geometries as both viewpoints and occluders.
 License: Apache License (>= 2)
-URL: https://cityriverspaces.github.io/visor/, https://github.com/CityRiverSpaces/visor
+URL: https://cityriverspaces.github.io/visor/, https://github.com/CityRiverSpaces/visor, https://doi.org/10.5281/zenodo.15133420
 BugReports: https://github.com/CityRiverSpaces/visor/issues
 Imports:
     sf,
