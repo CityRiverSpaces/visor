@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# visor <a href="https://cityriverspaces.github.io/visor/"><img src="man/figures/logo.png" align="right" height="137" alt="visor website" /></a>
+# visor <a href="https://cityriverspaces.github.io/visor/"><img src="man/figures/logo.png" align="right" width="120" alt="visor website" /></a>
 
 <!-- badges: start -->
 
