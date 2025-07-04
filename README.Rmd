@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# visor
+# visor <a href="https://cityriverspaces.github.io/visor/"><img src="man/figures/logo.png" align="right" height="137" alt="visor website" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CityRiverSpaces/visor/actions/workflows/R-CMD-check.yaml)
