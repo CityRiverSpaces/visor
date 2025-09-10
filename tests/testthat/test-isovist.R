@@ -186,3 +186,14 @@ test_that("merge_isovists returns the merged polygon, with or without holes", {
   expected <- sf::st_union(isovists)
   expect_equal(actual, expected)
 })
+
+test_that("visor works with fully occluded rays", {
+  viewpoints <- sf::st_sfc(sf::st_point(c(0, 0)), sf::st_point(c(2, 0)))
+  occluders <- sf::st_sfc(
+    create_occluder(1, 0, 2, 1),
+    create_occluder(3, 1, 1, 1)
+  )
+  expect_no_error(
+    get_isovist(viewpoints, occluders = occluders, ray_length = 1)
+  )
+})
