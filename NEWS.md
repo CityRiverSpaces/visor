@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added Zenodo and CRAN badges #15
 
+## Fixed
+
+- Isovist can now be computed also if some rays are fully occluded #17
+
 # Version 0.1.0 - 2025-04-03
 
 ## Added
