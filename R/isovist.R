@@ -159,10 +159,16 @@ occlude_rays <- function(rays, occluders = NULL) {
   # Filter the only features intersecting each others
   rays_intersect <- ray_geoms[ray_intersects_occluders]
   occluders_intersect <- occluder_geoms[occluder_intersects_rays]
+  occluders_intersect <- sf::st_union(occluders_intersect)
+
+  # Determine which rays are fully within the occluders and will thus be dropped
+  rays_within_occluders <- sf::st_within(rays_intersect,
+                                         occluders_intersect,
+                                         sparse = FALSE)
 
   # Determine the ray segments that do not overlap with the occluders. For each
-  # ray the segments form (multi)-linestrings
-  diffs <- sf::st_difference(rays_intersect, sf::st_union(occluders_intersect))
+  # ray the segments form (multi)-linestrings. Fully-occluded rays are dropped
+  diffs <- sf::st_difference(rays_intersect, occluders_intersect)
 
   # By casting `diffs` to linestrings, we keep only the first segment of each
   # ray, which, by construction, runs from the original viewpoint to the first
@@ -170,8 +176,12 @@ occlude_rays <- function(rays, occluders = NULL) {
   rays_occluded <- sf::st_cast(diffs, "LINESTRING", group_or_split = FALSE) |>
     suppressWarnings()
 
+  # Determine the indices of the partially-occluded rays, i.e. the ones that
+  # intersect the occluders and are not fully within the occluders
+  idx <- which(ray_intersects_occluders)[!rays_within_occluders]
+
   # Update the occluded ray geometries and return the sf(c) object
-  ray_geoms[ray_intersects_occluders] <- rays_occluded
+  ray_geoms[idx] <- rays_occluded
   sf::st_set_geometry(rays, ray_geoms)
 }
 
