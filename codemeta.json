@@ -4,17 +4,23 @@
   "identifier": "visor",
   "description": "Provides tools for visibility analysis in geospatial data. It offers functionality to perform isovist calculations, using arbitrary geometries as both viewpoints and occluders.",
   "name": "visor: Geospatial Tools for Visibility Analysis",
-  "relatedLink": "https://cityriverspaces.github.io/visor/",
+  "relatedLink": ["https://cityriverspaces.github.io/visor/", "https://doi.org/10.5281/zenodo.15133420", "https://CRAN.R-project.org/package=visor"],
   "codeRepository": "https://github.com/CityRiverSpaces/visor",
   "issueTracker": "https://github.com/CityRiverSpaces/visor/issues",
   "license": "Apache License 2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.0 (2024-04-24)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -124,7 +130,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.1.0"
+      "version": ">= 4.2"
     },
     "SystemRequirements": null
   },
