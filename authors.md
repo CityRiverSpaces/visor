@@ -13,7 +13,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/CityRiverSpaces/visor/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/CityRiverSpaces/visor/blob/v0.1.1/DESCRIPTION)
 
 Forgaci C, Nattino F (2025). *visor: Geospatial Tools for Visibility
 Analysis*. R package version 0.1.1,
