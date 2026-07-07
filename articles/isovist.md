@@ -5,6 +5,7 @@ the isovist for view points on an arbitrary geometry (a line) and a set
 of occluders.
 
 ``` r
+
 library(visor)
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
@@ -14,6 +15,7 @@ We define the occluder geometries and the viewpoint source geometry
 (here, a line):
 
 ``` r
+
 # Define occluder geoemtries
 occluders <- st_sfc(
   create_occluder(1, 1, 1, 0.5),
@@ -34,12 +36,14 @@ line <- st_sfc(
 Generate the viewpoints:
 
 ``` r
+
 vpoints <- get_viewpoints(line, density = 1)
 ```
 
 Calculate the isovist:
 
 ``` r
+
 isovist <- get_isovist(vpoints, occluders, ray_num = 160, ray_length = 5,
                        remove_holes = FALSE)
 ```
@@ -47,6 +51,7 @@ isovist <- get_isovist(vpoints, occluders, ray_num = 160, ray_length = 5,
 Plot the input geometries and the computed isovist:
 
 ``` r
+
 plot(isovist, col = "blue")
 plot(occluders, col = "grey", add = TRUE)
 plot(line, col = "lightblue", add = TRUE)

@@ -13,16 +13,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/CityRiverSpaces/visor/blob/v0.1.1/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/CityRiverSpaces/visor/blob/main/DESCRIPTION)
 
-Forgaci C, Nattino F (2025). *visor: Geospatial Tools for Visibility
+Forgaci C, Nattino F (2026). *visor: Geospatial Tools for Visibility
 Analysis*. R package version 0.1.1,
 <https://cityriverspaces.github.io/visor/>.
 
     @Manual{,
       title = {visor: Geospatial Tools for Visibility Analysis},
       author = {Claudiu Forgaci and Francesco Nattino},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.1.1},
       url = {https://cityriverspaces.github.io/visor/},
     }

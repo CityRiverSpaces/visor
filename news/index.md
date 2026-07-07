@@ -2,6 +2,8 @@
 
 ## visor 0.1.1 - 2025-12-04
 
+CRAN release: 2025-12-05
+
 ### Added
 
 - Added Zenodo and CRAN badges

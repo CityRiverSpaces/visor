@@ -8,6 +8,7 @@ You can install the released version of visor from
 [CRAN](https://cran.r-project.org) with:
 
 ``` r
+
 install.packages("visor")
 ```
 
@@ -15,6 +16,7 @@ You can install the development version of visor from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("CityRiverSpaces/visor")
 ```
@@ -26,6 +28,7 @@ the isovist for view points on an arbitrary geometry (a line) and a set
 of occluders:
 
 ``` r
+
 library(visor)
 library(sf)
 
